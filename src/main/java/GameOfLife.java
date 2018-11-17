@@ -44,12 +44,21 @@ public class GameOfLife {
       for (int column = 0; column < grid.length; column++) {
         grid[row][column] = false;
 
-        if (grid[row][column] = true) {
-          if (grid[row][column + 1] = true && grid[row + 1][column] = true)
-        }
+        if (grid[row][column] == true) {
 
+          //Now look at adjacent cells, if either is 'dead'
+          //then the current cell dies
+          if (! adjacentCellsAlive(row, column)) {
+               grid[row][column] = false;
+          }
+        }
       }
     }
+  }
+
+  private boolean adjacentCellsAlive(int row, int column) {
+    return grid[row][column + 1] == true &&
+           grid[row + 1][column] == true;
   }
 
   @Test
